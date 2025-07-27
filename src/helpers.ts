@@ -34,7 +34,7 @@ export const RECIPES = {
 };
 
 // Advanced Recipes
-const ADVANCED_RECIPES = {
+export const ADVANCED_RECIPES = {
   advancedRestorationKit: {
     name: "Advanced Restoration Kit",
     icon: "🛠️",

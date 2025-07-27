@@ -1,5 +1,5 @@
 // Item Definitions
-const ITEMS = {
+export const ITEMS = {
 	// COMMON - Basic materials and components
 	ashPowder: { name: "Ash Powder", rarity: "common", description: "Fine ash from burned embers", restoration: 3, theme: "ember", type: "material" },
 	driedVine: { name: "Dried Vine", rarity: "common", description: "Withered but still magical vines", restoration: 3, theme: "forest", type: "material" },
@@ -43,5 +43,3 @@ const ITEMS = {
 	magicAmplifier: { name: "Magic Amplifier", rarity: "epic", description: "Boosts all magical effects in an area", restoration: 0, theme: "ember", type: "component" },
 	terraformingDevice: { name: "Terraforming Device", rarity: "legendary", description: "Can reshape entire landscapes", restoration: 0, theme: "forge", type: "component" }
 };
-
-export const ITEMS = {};
