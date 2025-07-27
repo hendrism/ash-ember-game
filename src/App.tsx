@@ -1,36 +1,10 @@
 import React, { useReducer, useEffect, useCallback, useMemo } from 'react';
 import { Flame, Leaf, Gem, Zap, Star, Heart, Clock, Sparkles, Map, Hammer, Settings, Code } from 'lucide-react';
 import { ITEMS } from './constants/items';
+import { GAME_CONFIG, RARITY_ORDER, RESOURCE_ICONS } from './constants/gameConfig';
+import { RECIPES, ADVANCED_RECIPES } from './helpers';
 
 // ===== CONSTANTS (Ready for extraction) =====
-const GAME_CONFIG = {
-  baseRates: {
-    emberShard: 0.8,
-    whisperingVine: 0.6,
-    dustleaf: 0.7,
-    ancientAlloy: 0.2
-  },
-  rarityChances: {
-    common: 65,
-    uncommon: 20,
-    rare: 10,
-    epic: 4,
-    legendary: 1
-  },
-  timers: {
-    resourceTick: 1000,
-    moodDecay: 150000,
-    petCooldown: 60000
-  }
-};
-
-const RARITY_ORDER = ['legendary', 'epic', 'rare', 'uncommon', 'common'];
-const RESOURCE_ICONS = {
-  emberShard: '🔥',
-  whisperingVine: '🌿',
-  dustleaf: '🍃',
-  ancientAlloy: '⚡'
-};
 
 
 // Zone Projects
@@ -85,92 +59,6 @@ const ZONE_PROJECTS = {
   }
 };
 
-const RECIPES = {
-  forestInfusion: {
-    name: "Forest Infusion",
-    icon: "🌿",
-    inputs: { whisperingVine: 3, emberShard: 2 },
-    experience: 15,
-    description: "Blend nature's essence with ember energy",
-    outputs: {
-      common: [
-        { item: 'driedVine', baseChance: 30 },
-        { item: 'ashPowder', baseChance: 25 }
-      ],
-      uncommon: [
-        { item: 'soulcord', baseChance: 20 },
-        { item: 'livingWood', baseChance: 15 }
-      ],
-      rare: [
-        { item: 'mysticEssence', baseChance: 8 },
-        { item: 'spiritLens', baseChance: 5 }
-      ],
-      epic: [
-        { item: 'lifeSeed', baseChance: 4 }
-      ],
-      legendary: [
-        { item: 'worldSeed', baseChance: 2 }
-      ]
-    }
-  },
-  emberForge: {
-    name: "Ember Forge",
-    icon: "⚒️",
-    inputs: { emberShard: 4, dustleaf: 2, ancientAlloy: 1 },
-    experience: 25,
-    description: "Forge materials in the heat of ancient flames",
-    outputs: {
-      common: [
-        { item: 'emberDust', baseChance: 25 },
-        { item: 'ironFilings', baseChance: 25 }
-      ],
-      uncommon: [
-        { item: 'ironShard', baseChance: 20 },
-        { item: 'emberCrystal', baseChance: 15 }
-      ],
-      rare: [
-        { item: 'fireglass', baseChance: 10 },
-        { item: 'restorationHammer', baseChance: 8 }
-      ],
-      epic: [
-        { item: 'phoenixFeather', baseChance: 5 },
-        { item: 'masterworkGear', baseChance: 3 }
-      ],
-      legendary: [
-        { item: 'phoenixCore', baseChance: 2 },
-        { item: 'creatorsHammer', baseChance: 1 }
-      ]
-    }
-  },
-  voidRitual: {
-    name: "Void Ritual",
-    icon: "🌑",
-    inputs: { whisperingVine: 5, dustleaf: 4, ancientAlloy: 2 },
-    experience: 40,
-    description: "Channel the darkness between worlds",
-    outputs: {
-      common: [
-        { item: 'voidShard', baseChance: 30 }
-      ],
-      uncommon: [
-        { item: 'shadowEssence', baseChance: 25 },
-        { item: 'soulcord', baseChance: 15 }
-      ],
-      rare: [
-        { item: 'voidMetal', baseChance: 15 },
-        { item: 'mysticEssence', baseChance: 8 }
-      ],
-      epic: [
-        { item: 'voidCrystal', baseChance: 12 },
-        { item: 'astralCompass', baseChance: 8 }
-      ],
-      legendary: [
-        { item: 'voidHeart', baseChance: 3 },
-        { item: 'ancientRelic', baseChance: 2 }
-      ]
-    }
-  }
-};
 
 // ===== HELPER FUNCTIONS (Ready for extraction) =====
 const formatNumber = (num) => Math.floor(num * 10) / 10;
